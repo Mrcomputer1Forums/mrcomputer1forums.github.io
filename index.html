@@ -6,9 +6,9 @@
 	<script>
 		$(document).ready(function(){
 			$.get("http://api.github.com/repos/Mrcomputer1Forums/Mrcomputer1Forums/releases", {}, function(data){
-				$("#latestlink").attr("href", "https://github.com/Mrcomputer1Forums/Mrcomputer1Forums/archive/" + data[i]["tag_name"] + ".zip");
-				$("#latestbtn").html("Download latest (" + data[i]["tag_name"] + ")");
-				if(data[i]["prerelease"]){
+				$("#latestlink").attr("href", "https://github.com/Mrcomputer1Forums/Mrcomputer1Forums/archive/" + data[0]["tag_name"] + ".zip");
+				$("#latestbtn").html("Download latest (" + data[0]["tag_name"] + ")");
+				if(data[0]["prerelease"]){
 					$("#latestbtn").addClass("btnpre");
 				}
 			}, "json");
