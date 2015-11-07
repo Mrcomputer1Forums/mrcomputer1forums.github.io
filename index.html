@@ -1,6 +1,24 @@
 <html>
   <head>
     <title>Mrcomputer1 Forums</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<script>
+		$(document).ready(function(){
+			$.get("http://api.github.com/repos/Mrcomputer1Forums/Mrcomputer1Forums/releases", {}, function(data){
+				var i = 0;
+				while(i != data.length){
+					if (data[i]["draft"] || data[i]["prerelease"]){
+					
+					}else{
+						$("#latestlink").attr("href", "https://github.com/Mrcomputer1Forums/Mrcomputer1Forums/archive/" + data[i]["tag_name"] + ".zip");
+						$("#latestbtn").html("Download latest (" + data[i]["tag_name"].replace(/v/g, "") + ")");
+					}
+					i = i + 1;
+				}
+			}, "json");
+		});
+	</script>
     <style>
       a{
         color:blue;
@@ -30,11 +48,13 @@
     <center>
 		<h1>Mrcomputer1 Forums</h1>
 		<hr color="grey"><br><br>
-		<a href="http://github.com/Mrcomputer1Forums/Mrcomputer1Forums/archive/v1.0.zip"><span class="btn">Download latest (v1.0)</span></a>
+		<a href="http://github.com/Mrcomputer1Forums/Mrcomputer1Forums/archive/v1.0.zip" id="latestlink"><span class="btn" id="latestbtn">Download latest (v1.0)</span></a>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<a href="http://github.com/Mrcomputer1Forums/Mrcomputer1Forums/releases"><span class="btn">Older version and pre-releases</span></a>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<a href="http://github.com/Mrcomputer1Forums/Mrcomputer1Forums/"><span class="btn">Source code</span></a>
+		<hr color="grey"><br><br>
+		
     </center>
   </body>
 </html>
