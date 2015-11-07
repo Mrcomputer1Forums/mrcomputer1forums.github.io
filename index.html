@@ -13,13 +13,13 @@
 				$("#olderlist").show();
 				$.get("http://api.github.com/repos/Mrcomputer1Forums/Mrcomputer1Forums/releases", {}, function(data){
 					var s = false;
+					$("#olderlist").html("<ul id='olderlisttable'></ul>");
 					$.each(data, function(index, value){
 						if(index == 19){
 							s = true;
 						}
 						
 						if(!s){
-							$("#olderlist").html("<ul id='olderlisttable'></ul>");
 							$("#olderlisttable").html($('#olderlisttable').html() + "<li><a href='https://github.com/Mrcomputer1Forums/Mrcomputer1Forums/archive/" + value['tag_name'] + ".zip'>" + value['name'] + "</a></li>");
 						}
 					});
