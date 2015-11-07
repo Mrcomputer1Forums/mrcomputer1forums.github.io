@@ -20,7 +20,7 @@
 						
 						if(!s){
 							$("#olderlist").html("<ul id='olderlisttable'></ul>");
-							$("#olderlisttable").append("<li><a href='https://github.com/Mrcomputer1Forums/Mrcomputer1Forums/archive/" + value['tag_name'] + ".zip'>" + value['name'] + "</a></li>");
+							$("#olderlisttable").html($('#olderlisttable').html() + "<li><a href='https://github.com/Mrcomputer1Forums/Mrcomputer1Forums/archive/" + value['tag_name'] + ".zip'>" + value['name'] + "</a></li>");
 						}
 					});
 				});
@@ -63,7 +63,7 @@
     <center>
 		<h1>Mrcomputer1 Forums</h1>
 		<hr color="grey"><br><br>
-		<a href="http://github.com/Mrcomputer1Forums/Mrcomputer1Forums/archive/v1.0.zip" id="latestlink"><span class="btn" id="latestbtn">Download latest (v1.0)</span></a>
+		<a href="http://github.com/Mrcomputer1Forums/Mrcomputer1Forums/archive/v1.0.zip" id="latestlink"><span class="btn" id="latestbtn">Download first release</span></a>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<a href="#" id="older"><span class="btn">Older versions and pre-releases</span></a>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
