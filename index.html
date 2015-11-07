@@ -8,10 +8,23 @@
 			$.get("http://api.github.com/repos/Mrcomputer1Forums/Mrcomputer1Forums/releases", {}, function(data){
 				$("#latestlink").attr("href", "https://github.com/Mrcomputer1Forums/Mrcomputer1Forums/archive/" + data[0]["tag_name"] + ".zip");
 				$("#latestbtn").html("Download latest (" + data[0]["tag_name"] + ")");
-				if(data[0]["prerelease"] == "true"){
-					$("#latestbtn").addClass("btnpre");
-				}
 			}, "json");
+			$("#older").click(function(){
+				$("#olderlist").show();
+				$.get("http://api.github.com/repos/Mrcomputer1Forums/Mrcomputer1Forums/releases", {}, function(data){
+					var s = false;
+					$.each(data, function(index, value){
+						if(index == 19){
+							s = true;
+						}
+						
+						if(!s){
+							$("#olderlist").html("<ul id='olderlisttable'></ul>");
+							$("#olderlisttable").append("<li><a href='https://github.com/Mrcomputer1Forums/Mrcomputer1Forums/archive/" + value['tag_name'] + ".zip'>" + value['name'] + "</a></li>");
+						}
+					});
+				});
+			});
 		});
 	</script>
     <style>
@@ -52,11 +65,11 @@
 		<hr color="grey"><br><br>
 		<a href="http://github.com/Mrcomputer1Forums/Mrcomputer1Forums/archive/v1.0.zip" id="latestlink"><span class="btn" id="latestbtn">Download latest (v1.0)</span></a>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<a href="http://github.com/Mrcomputer1Forums/Mrcomputer1Forums/releases"><span class="btn">Older versions and pre-releases</span></a>
+		<a href="#" id="older"><span class="btn">Older versions and pre-releases</span></a>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<a href="http://github.com/Mrcomputer1Forums/Mrcomputer1Forums/"><span class="btn">Source code</span></a>
 		<br><br><hr color="grey">
-		
+		<div id="olderlist" style="display:none"><span class="fa fa-spinner fa-pulse"></span> Loading! Please wait...</div>
     </center>
   </body>
 </html>
