@@ -6,15 +6,10 @@
 	<script>
 		$(document).ready(function(){
 			$.get("http://api.github.com/repos/Mrcomputer1Forums/Mrcomputer1Forums/releases", {}, function(data){
-				var i = 0;
-				while(i != data.length){
-					if (data[i]["draft"] || data[i]["prerelease"]){
-					
-					}else{
-						$("#latestlink").attr("href", "https://github.com/Mrcomputer1Forums/Mrcomputer1Forums/archive/" + data[i]["tag_name"] + ".zip");
-						$("#latestbtn").html("Download latest (" + data[i]["tag_name"] + ")");
-					}
-					i = i + 1;
+				$("#latestlink").attr("href", "https://github.com/Mrcomputer1Forums/Mrcomputer1Forums/archive/" + data[i]["tag_name"] + ".zip");
+				$("#latestbtn").html("Download latest (" + data[i]["tag_name"] + ")");
+				if(data[i]["prerelease"]){
+					$("#latestbtn").addClass("btnpre");
 				}
 			}, "json");
 		});
@@ -41,6 +36,13 @@
 		background-color:blue;
 		border: 1px solid white;
 		transition: background 1.0s ease-out 0s;
+	  }
+	  .btnpre{
+		color:red;
+	  }
+	  .btnpre:hover{
+		color:white;
+		background-color:red;
 	  }
     </style>
   </head>
