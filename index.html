@@ -20,7 +20,11 @@
 						}
 						
 						if(!s){
-							$("#olderlisttable").html($('#olderlisttable').html() + "<li><a href='https://github.com/Mrcomputer1Forums/Mrcomputer1Forums/archive/" + value['tag_name'] + ".zip'>" + value['name'] + "</a></li>");
+							if(value['prerelease']){
+								$("#olderlisttable").html($('#olderlisttable').html() + "<li><a href='https://github.com/Mrcomputer1Forums/Mrcomputer1Forums/archive/" + value['tag_name'] + ".zip'>" + value['name'] + "&nbsp;<span class='fa fa-bug'></span></a></li>");
+							}else{
+								$("#olderlisttable").html($('#olderlisttable').html() + "<li><a href='https://github.com/Mrcomputer1Forums/Mrcomputer1Forums/archive/" + value['tag_name'] + ".zip'>" + value['name'] + "</a></li>");
+							}
 						}
 					});
 				});
