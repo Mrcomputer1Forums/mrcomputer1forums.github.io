@@ -8,7 +8,7 @@
 			$.get("http://api.github.com/repos/Mrcomputer1Forums/Mrcomputer1Forums/releases", {}, function(data){
 				$("#latestlink").attr("href", "https://github.com/Mrcomputer1Forums/Mrcomputer1Forums/archive/" + data[0]["tag_name"] + ".zip");
 				$("#latestbtn").html("Download latest (" + data[0]["tag_name"] + ")");
-				if(data[0]["prerelease"]){
+				if(data[0]["prerelease"] == "true"){
 					$("#latestbtn").addClass("btnpre");
 				}
 			}, "json");
@@ -52,10 +52,10 @@
 		<hr color="grey"><br><br>
 		<a href="http://github.com/Mrcomputer1Forums/Mrcomputer1Forums/archive/v1.0.zip" id="latestlink"><span class="btn" id="latestbtn">Download latest (v1.0)</span></a>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<a href="http://github.com/Mrcomputer1Forums/Mrcomputer1Forums/releases"><span class="btn">Older version and pre-releases</span></a>
+		<a href="http://github.com/Mrcomputer1Forums/Mrcomputer1Forums/releases"><span class="btn">Older versions and pre-releases</span></a>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<a href="http://github.com/Mrcomputer1Forums/Mrcomputer1Forums/"><span class="btn">Source code</span></a>
-		<hr color="grey"><br><br>
+		<br><br><hr color="grey">
 		
     </center>
   </body>
