@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<title>Download | Mrcomputer1 Forums</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../style.css">
+		<script>
+			$(document).ready(function(){
+				$("#olderlist").show();
+				$.get("http://api.github.com/repos/Mrcomputer1Forums/Mrcomputer1Forums/releases", {}, function(data){
+					var s = false;
+					$("#olderlist").html("<ul id='olderlisttable'></ul>");
+					$.each(data, function(index, value){
+						if(index == 19){
+							s = true;
+						}
+						
+						if(!s){
+							if(value['prerelease'] == true || value['prerelease'] == "true"){
+								$("#olderlisttable").html($('#olderlisttable').html() + "<li style='color:red'><a style='color:red' href='https://github.com/Mrcomputer1Forums/Mrcomputer1Forums/archive/" + value['tag_name'] + ".zip'>" + value['name'] + "&nbsp;<span class='fa fa-bug'></span></a></li>");
+							}else{
+								$("#olderlisttable").html($('#olderlisttable').html() + "<li><a href='https://github.com/Mrcomputer1Forums/Mrcomputer1Forums/archive/" + value['tag_name'] + ".zip'>" + value['name'] + "</a></li>");
+							}
+						}
+					});
+				});
+			});
+		</script>
+	</head>
+	<body><center>
+		<!--HEADER-->
+		<a href="/" class="headerlink">Features & Screenshots</a> &nbsp;
+		<a href="/download" class="headerlink" style="color:black">Download</a> &nbsp;
+		<a href="/docs" class="headerlink">Documentation</a> &nbsp;
+		<a href="http://github.com/Mrcomputer1Forums/Mrcomputer1Forums/" class="headerlink">GitHub</a> &nbsp;
+		<a href="/heroku" class="headerlink">Deploy to Heroku</a> &nbsp;
+		<br><br><hr color="grey">
+		<!--HEADER-->
+		<h1>Mrcomputer1 Forums</h1>
+		<hr color="grey"><br><br>
+		<b>Red is a pre release</b><br>
+		<b>Click to download</b><br>
+		<div id="olderlist"><span class="fa fa-spinner fa-pulse"></span> Loading! Please wait...</div>
+	</center></body>
+</html>

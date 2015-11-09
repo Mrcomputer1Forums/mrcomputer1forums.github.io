@@ -1,0 +1,67 @@
+a{
+color:blue;
+text-decoration:none;
+}
+.btn{
+padding:12px;
+font-size:23px;
+border-radius: 5px;
+color: black;
+background-color:white;
+border: 1px solid blue;
+transition: background 1.0s ease-out 0s,
+color 1.0s ease-out 0s;
+}
+.btn:hover{
+padding:12px;
+font-size:23px;
+border-radius: 5px;
+color: white;
+background-color:blue;
+border: 1px solid white;
+transition: background 1.0s ease-out 0s,
+color 1.0s ease-out 0s;
+}
+.headerlink{
+color:lightgrey;
+text-decoration:none;
+transition: color 1.0s ease-out 0s;
+}
+.headerlink:hover{
+color:black;
+text-decoration:none;
+transition: color 1.0s ease-out 0s;
+}
+.tab{
+border-top-left-radius: 5px;
+border-top-right-radius: 5px;
+border-bottom-left-radius: 0px;
+border-bottom-left-radius: 0px;
+border: 1px solid lightgrey;
+cursor: pointer;
+padding: 10px;
+}
+.tab:hover{
+border-top-left-radius: 5px;
+border-top-right-radius: 5px;
+border-bottom-left-radius: 0px;
+border-bottom-left-radius: 0px;
+border: 1px solid black;
+cursor: pointer;
+padding: 10px;
+}
+.tabselected{
+border-top-left-radius: 5px;
+border-top-right-radius: 5px;
+border-bottom-left-radius: 0px;
+border-bottom-left-radius: 0px;
+border: 1px solid black;
+color: white;
+background-color:blue;
+padding: 10px;
+}
+.tabbox{
+border: 1px solid black;
+padding: 10px;
+margin-top:8px;
+}
