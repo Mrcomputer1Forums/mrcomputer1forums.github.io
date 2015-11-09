@@ -3,77 +3,74 @@
     <title>Mrcomputer1 Forums</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
 	<script>
 		$(document).ready(function(){
-			$.get("http://api.github.com/repos/Mrcomputer1Forums/Mrcomputer1Forums/releases", {}, function(data){
-				$("#latestlink").attr("href", "https://github.com/Mrcomputer1Forums/Mrcomputer1Forums/archive/" + data[0]["tag_name"] + ".zip");
-				$("#latestbtn").html("Download latest (" + data[0]["tag_name"] + ")");
-			}, "json");
-			$("#older").click(function(){
-				$("#olderlist").show();
-				$.get("http://api.github.com/repos/Mrcomputer1Forums/Mrcomputer1Forums/releases", {}, function(data){
-					var s = false;
-					$("#olderlist").html("<ul id='olderlisttable'></ul>");
-					$.each(data, function(index, value){
-						if(index == 19){
-							s = true;
-						}
-						
-						if(!s){
-							if(value['prerelease']){
-								$("#olderlisttable").html($('#olderlisttable').html() + "<li><a href='https://github.com/Mrcomputer1Forums/Mrcomputer1Forums/archive/" + value['tag_name'] + ".zip'>" + value['name'] + "&nbsp;<span class='fa fa-bug'></span></a></li>");
-							}else{
-								$("#olderlisttable").html($('#olderlisttable').html() + "<li><a href='https://github.com/Mrcomputer1Forums/Mrcomputer1Forums/archive/" + value['tag_name'] + ".zip'>" + value['name'] + "</a></li>");
-							}
-						}
+			$(".tabbtn").each(function(){
+				$(this).click(function(){
+					$(".tabitem").each(function(){
+						$(this).hide();
 					});
+					$("#tab" + $(this).attr("data-tab-id")).show();
 				});
 			});
+			
 		});
 	</script>
-    <style>
-      a{
-        color:blue;
-        text-decoration:none;
-      }
-	  .btn{
-		padding:12px;
-		font-size:23px;
-		border-radius: 5px;
-		color: black;
-		background-color:white;
-		border: 1px solid blue;
-		transition: background 1.0s ease-out 0s;
-	  }
-	  .btn:hover{
-		padding:12px;
-		font-size:23px;
-		border-radius: 5px;
-		color: white;
-		background-color:blue;
-		border: 1px solid white;
-		transition: background 1.0s ease-out 0s;
-	  }
-	  .btnpre{
-		color:red;
-	  }
-	  .btnpre:hover{
-		color:white;
-		background-color:red;
-	  }
-    </style>
   </head>
   <body>
     <center>
+		<!--HEADER-->
+		<a href="/" class="headerlink" style="color:black">Features & Screenshots</a> &nbsp;
+		<a href="download" class="headerlink">Download</a> &nbsp;
+		<a href="docs" class="headerlink">Documentation</a> &nbsp;
+		<a href="http://github.com/Mrcomputer1Forums/Mrcomputer1Forums/" class="headerlink">GitHub</a> &nbsp;
+		<a href="heroku" class="headerlink">Deploy to Heroku</a> &nbsp;
+		<br><br><hr color="grey">
+		<!--HEADER-->
 		<h1>Mrcomputer1 Forums</h1>
 		<hr color="grey"><br><br>
-		<a href="http://github.com/Mrcomputer1Forums/Mrcomputer1Forums/archive/v1.0.zip" id="latestlink"><span class="btn" id="latestbtn">Download first release</span></a>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<a href="#" id="older"><span class="btn">Older versions and pre-releases</span></a>
+		<a href="download" id="latestlink"><span class="btn" id="latestbtn">Download</span></a>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<a href="http://github.com/Mrcomputer1Forums/Mrcomputer1Forums/"><span class="btn">Source code</span></a>
-		<br><br><hr color="grey">
-		<div id="olderlist" style="display:none"><span class="fa fa-spinner fa-pulse"></span> Loading! Please wait...</div>
+		<br><br><hr color="grey"><br><br>
+		<table>
+			<tr><td>
+				<center><span class="tab tabbtn" data-tab-id="1">Features</span> &nbsp; <span class="tab tabbtn" data-tab-id="2">Screenshots</span></center>
+			</td></tr>
+			<tr><td>
+				<div class="tabbox">
+					<div id="tab1" class="tabitem">
+						Basic Features:
+						<ul>
+							<li>Sections and Forums</li>
+							<li>Topics location on forum based on last post time or sticky status</li>
+							<li>Users can have an about me, country and website on their profile</li>
+						</ul>
+						
+						Moderation Features:
+						<ul>
+							<li>Locked topics</li>
+							<li>Sticky topics</li>
+							<li>Hidden forums that can only be seen by moderators</li>
+							<li>Deleted post and topics can go to a "deleted post and topics" forum</li>
+							<li>Banned users can appeal</li>
+							<li>News forum that can only have topics created in it by admins or mods</li>
+						</ul>
+						
+						Changing the source code:
+						<ul>
+							<li><b>Currently their is no add-on/plug-in system or theme system</b></li>
+							<li>Must change your site's theme?: Change the .css in /Forum/static/Mrcomputer1Forums/</li>
+							<li>Must add an add-on?: Sorry, you will have to edit the source code (well add-ons are currently only source code modifications)</li>
+						</ul>
+					</div>
+					<div id="tab2" style="display:none" class="tabitem">
+						Coming soon!
+					</div>
+				</div>
+			</td></tr>
+		</table>
     </center>
   </body>
 </html>
