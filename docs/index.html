@@ -1,9 +1,48 @@
 <html>
 	<head>
-		<title>Deploy to Heroku | Mrcomputer1 Forums</title>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<title>Documentation | Mrcomputer1 Forums</title>
+		<script src="../jquery.min.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../style.css">
+		<link rel="stylesheet" href="style.css">
+		<script>
+			var old = document.location.hash;
+			$(document).ready(function(){
+				var path = document.location.hash;
+				if (path == "" || path == "#"){
+					path = "#page=home";
+				}
+				var path2 = path.split(",");
+				var file = path2[0].split("=")[1];
+				$("#editthispageongithub").html("<a href='https://github.com/Mrcomputer1Forums/mrcomputer1forums.github.io/edit/master/docs/docs/" + file + ".md'>Edit this page on Github</a>");
+				$.ajax("docs/" + file + ".md", {
+					success: function(data){
+						//$.post("http://api.github.com/markdown/raw", data, function(s){
+						//	$("content").html(s);
+						//});
+						$.ajax("http://api.github.com/markdown/raw", {
+							contentType: "text/plain",
+							method: "POST",
+							data: data,
+							success: function(s){
+								$("content").html(s);
+							},
+							error: function(){
+								$("content").html("Failed to request Github's markdown API to parse markdown file " + file);
+							}
+						});
+					},
+					error: function(){
+						$("content").html("That page could not be loaded! It might not have been found! But it could be another error because this error page is used for all errors!");
+					},
+					dataType: "text"
+				});
+				$("#sidebar").load("_nav.html");
+				setInterval(function(){
+					if(old != document.location.hash) document.location.reload();
+				}, 1000);
+			});
+		</script>
 	</head>
 	<body><center>
 		<!--HEADER-->
@@ -16,6 +55,17 @@
 		<!--HEADER-->
 		<h1>Mrcomputer1 Forums</h1>
 		<hr color="grey"><br><br>
-		<h4>Coming Soon :)</h4>
-	</center></body>
+	</center>
+	<table width="100%">
+		<tr>
+			<td width="20%" id="sidebar" class="sidebar">
+			</td>
+			<td width="80%">
+				<span style="text-align:left;" id="editthispageongithub">Edit this page on Github</span><br>
+				<content>
+					<span class="fa fa-spinner fa-pulse"></span> Loading...
+				</content>
+			</td>
+		</tr>
+	</body>
 </html>
