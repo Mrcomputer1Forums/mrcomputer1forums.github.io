@@ -1,0 +1,27 @@
+.highlight{
+	background-color:lightgrey;
+	border-radius:3px;
+	padding:5px;
+}
+.sidebar{
+	background-color:lightgrey;
+}
+td{
+	vertical-align: top;
+}
+.list{
+	list-style:none;
+}
+.heading{
+	font-weight:bold;
+	font-size:20px;
+}
+.subheading{
+	font-weight:bold;
+	font-size:15px;
+}
+pre{
+	background-color:lightgrey;
+	border-radius:3px;
+	padding:5px;
+}
