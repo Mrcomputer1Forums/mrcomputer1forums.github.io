@@ -33,6 +33,11 @@ STATICFILES_DIRS = (
 )
 ```
 
+At the end of the file add
+```python
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
+```
+
 In (project name)/urls.py change urlpatterns so it looks like this
 ```python
 urlpatterns = [
