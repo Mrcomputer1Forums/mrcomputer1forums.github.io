@@ -26,7 +26,7 @@ manage.py         <FILE>     Python File (Django project command file)
 ```
 
 **Controls**
-Starts server with
+Start server with
 ```batch
 python manage.py runserver
 ```
