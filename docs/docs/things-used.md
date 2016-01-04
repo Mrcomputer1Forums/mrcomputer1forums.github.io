@@ -13,3 +13,5 @@
 [Django - The framework](http://djangoproject.com) [[License]](https://github.com/django/django/blob/master/LICENSE)
 
 [Python - The programming language](http://python.org) [[License]](https://docs.python.org/3/license.html)
+
+[Emoji One - Emojis](http://emojione.com) [[License]](http://emojione.com/licensing/)
